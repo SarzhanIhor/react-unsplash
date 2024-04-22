@@ -1,0 +1,28 @@
+:root {
+  /* dark mode setup  */
+  --dark-mode-bg-color: #333;
+  --dark-mode-text-color: #f0f0f0;
+  --backgroundColor: var(--grey-50);
+  --textColor: var(--grey-900);
+
+  --darkModeTransition: color 0.3s ease-in-out, background-color 0.3s
+      ease-in-out;
+}
+
+.dark-theme {
+  --textColor: var(--dark-mode-text-color);
+  --backgroundColor: var(--dark-mode-bg-color);
+}
+
+body {
+  transition: var(--darkModeTransition);
+  background: var(--backgroundColor);
+  color: var(--textColor);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --textColor: var(--dark-mode-text-color);
+    --backgroundColor: var(--dark-mode-bg-color);
+  }
+}
