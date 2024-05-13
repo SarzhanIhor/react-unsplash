@@ -1,6 +1,11 @@
 import React from 'react'
+import { useGlobalContext } from '../context'
+
 
 const SearchForm = () => {
+
+  const {setSearchTerm} = useGlobalContext()
+  // console.log(setSearchTerm);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -9,6 +14,7 @@ const SearchForm = () => {
     // console.log(searchValue);
 
     if (!searchValue) return
+    setSearchTerm(searchValue)
   }
 
 

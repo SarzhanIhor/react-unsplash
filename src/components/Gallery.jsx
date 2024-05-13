@@ -1,15 +1,19 @@
 import axios from 'axios';
 import React from 'react'
 import { useQuery } from 'react-query';
+import { useGlobalContext } from '../context';
 
 
-const url = "https://api.unsplash.com/photos/?client_id=igc4p6wVnDOUul977vmWs2U8iN-saxmL3c9Y5GRlv7Y";
+const url = `https://api.unsplash.com/search/photos/?client_id=${import.meta.env.VITE_API_KEY}`;
 
 const Gallery = () => {
+  const {searchTerm} = useGlobalContext()
+  // console.log(searchTerm);
+
   const response = useQuery({
-    queryKey: ["images"],
+    queryKey: ["images", searchTerm],
     queryFn: async () => {
-      const result = await axios.get(url)
+      const result = await axios.get(`${url}&query=${searchTerm}`)
       return result.data
     }
   })
@@ -30,7 +34,8 @@ const Gallery = () => {
     )
   }
 
-  const results = response.data
+  const results = response.data.results
+  // console.log(results);
   if (results.length < 1) {
     return (
       <section className="image-container">
