@@ -22,7 +22,7 @@ const SearchForm = () => {
     <section className='title'>
       <h1>Unsplash Images</h1>
       <form className="search-form" onSubmit={handleSubmit}>
-        <input type="text" name='search' placeholder='cat' className='form-input search-input'/>
+        <input type="text" name='search' placeholder='Add any word' className='form-input search-input'/>
         <button className="btn" type='submit'>Search</button>
       </form>
     </section>
